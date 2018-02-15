@@ -1,6 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Text;
 
 namespace TRPG_KATA_ROT13
 {
@@ -61,68 +59,6 @@ namespace TRPG_KATA_ROT13
             var rotTranslator = new RotTranslator();
             var result = rotTranslator.Tanslate("EBG13 rknzcyr.");
             Assert.AreEqual("ROT13 example.", result);
-        }
-    }
-
-    public class RotTranslator
-    {
-        private readonly int _rotRange = 13;
-
-        public string Tanslate(string str)
-        {
-            var charArray = str.ToCharArray();
-            var result = new StringBuilder();
-            foreach (var ch in charArray)
-            {
-                if (!Rot13Case(ch))
-                {
-                    result.Append(ch);
-                    continue;
-                }
-                var asciiNum = Convert.ToInt32(ch);
-                if (ForwardCase(asciiNum))
-                {
-                    asciiNum += _rotRange;
-                }
-                else
-                {
-                    asciiNum -= _rotRange;
-                }
-                result.Append(Convert.ToChar(asciiNum));
-            }
-
-            return result.ToString();
-        }
-
-        private bool ForwardCase(int asciiNum)
-        {
-            if (asciiNum >= 65 && asciiNum < 78)
-            {
-                return true;
-            }
-
-            if (asciiNum >= 97 && asciiNum < 110)
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        private static bool Rot13Case(char ch)
-        {
-            var asciiNum = Convert.ToInt32(ch);
-            if (asciiNum >= 65 && asciiNum <= 90)
-            {
-                return true;
-            }
-
-            if (asciiNum >= 97 && asciiNum <= 122)
-            {
-                return true;
-            }
-
-            return false;
         }
     }
 }

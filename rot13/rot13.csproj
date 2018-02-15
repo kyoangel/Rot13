@@ -48,6 +48,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RotTranslator.cs" />
     <Compile Include="UnitTestROT13.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
